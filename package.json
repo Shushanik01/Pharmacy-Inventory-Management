@@ -1,0 +1,23 @@
+{
+  "name": "pharmacy",
+  "version": "1.0.0",
+  "description": "An Express + PostgreSQL inventory management app for a pharmacy — track medicines, their categories, and their manufacturers.",
+  "main": "app.js",
+  "scripts": {
+    "test": "run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shushanik01/Pharmacy-Inventory-Management.git"
+  },
+  "author": "Shushanik A",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shushanik01/Pharmacy-Inventory-Management/issues"
+  },
+  "homepage": "https://github.com/Shushanik01/Pharmacy-Inventory-Management#readme",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1"
+  }
+}

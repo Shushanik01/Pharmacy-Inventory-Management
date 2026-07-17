@@ -1,4 +1,4 @@
-import pool from "../db/pool.js";
+import pool from "./pool.js";
 
 async function seed() {
     await pool.query(`

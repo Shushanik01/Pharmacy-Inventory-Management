@@ -6,3 +6,10 @@ export async function categoryModel() {
     );
     return rows
 };
+
+export async function medicinesModel() {
+    const { rows } = await pool.query(
+        "SELECT * FROM medicines ORDER BY NAME"
+    );
+    return rows
+};

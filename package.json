@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "An Express + PostgreSQL inventory management app for a pharmacy — track medicines, their categories, and their manufacturers.",
   "main": "app.js",
+  "type": "module",
   "scripts": {
     "test": "run test"
   },

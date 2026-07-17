@@ -1,4 +1,4 @@
-import pool from "./pool";
+import pool from "./pool.js";
 
 export async function categoryModel() {
     const { rows } = await pool.query(

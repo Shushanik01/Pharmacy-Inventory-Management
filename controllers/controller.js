@@ -1,7 +1,7 @@
-import { categoryModel } from "../database/queries";
+import { categoryModel } from "../database/queries.js";
 
 export async function getAllCategories(req, res) {
-    const categories = await categoryModel.getAllCategories();
+    const categories = await categoryModel();
 
     res.render("categories", {
         categories
@@ -9,5 +9,5 @@ export async function getAllCategories(req, res) {
 };
 
 export function getHomePage(req, res) {
-    res.render("index");
+    res.render("indexView");
 }

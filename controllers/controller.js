@@ -1,4 +1,4 @@
-import { categoryModel, medicinesModel } from "../database/queries.js";
+import { categoryModel, medicinesModel, getManuf } from "../database/queries.js";
 
 export async function getAllCategories(req, res) {
     const categories = await categoryModel();
@@ -19,3 +19,11 @@ export async function getMedicines(req, res){
         medicines
     })
 };
+
+export async function getManufacturers(req, res){
+    const man = await getManuf();
+
+    res.render("createdBy", {
+        man
+    })
+}

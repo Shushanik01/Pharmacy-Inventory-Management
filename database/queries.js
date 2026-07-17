@@ -13,3 +13,10 @@ export async function medicinesModel() {
     );
     return rows
 };
+
+export async function getManuf(){
+    const {rows} = await pool.query(
+        "SELECT * FROM manufactorers ORDER BY NAME"
+    );
+    return rows
+}

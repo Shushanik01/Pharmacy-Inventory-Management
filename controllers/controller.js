@@ -1,3 +1,5 @@
+import { categoryModel } from "../database/queries";
+
 export async function getAllCategories(req, res) {
     const categories = await categoryModel.getAllCategories();
 

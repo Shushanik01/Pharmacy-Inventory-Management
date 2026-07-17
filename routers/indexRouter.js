@@ -3,6 +3,6 @@ import * as indexController from "../controllers/controller.js"
 
 const IndexRouter = Router();
 
-IndexRouter.get('/', indexController.getHomepage);
+IndexRouter.get('/', indexController.getHomePage);
 
 export default IndexRouter

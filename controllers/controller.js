@@ -1,4 +1,4 @@
-import { categoryModel, medicinesModel, getManuf } from "../database/queries.js";
+import { categoryModel, medicinesModel, getManuf, addMedicine } from "../database/queries.js";
 
 export async function getAllCategories(req, res) {
     const categories = await categoryModel();
@@ -26,4 +26,9 @@ export async function getManufacturers(req, res){
     res.render("createdBy", {
         man
     })
+};
+
+export async function addMedicine(req, res){
+    await addMedicine(req.body);
+    res.redirect('/medicines')
 }

@@ -10,6 +10,7 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use(express.static("public"));
 app.use(IndexRouter);
 app.use(categoryRoute);
 app.use(medRouter);

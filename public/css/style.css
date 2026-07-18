@@ -1,0 +1,112 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    color: #1f2328;
+    background: #f6f7f9;
+}
+
+header {
+    background: #1f2328;
+    color: #fff;
+    padding: 1.25rem 2rem;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+nav a {
+    color: #fff;
+    margin-right: 1rem;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 2rem;
+}
+
+.page {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.content {
+    flex: 1;
+    min-width: 0;
+}
+
+.form-panel {
+    width: 320px;
+    flex-shrink: 0;
+    background: #fff;
+    border: 1px solid #d8dbe0;
+    border-radius: 8px;
+    padding: 1.5rem;
+    order: 2;
+}
+
+.form-panel h2 {
+    margin-top: 0;
+    font-size: 1.1rem;
+}
+
+.form-panel form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.form-panel label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    display: block;
+}
+
+.form-panel input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #c7cbd1;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+.form-panel button {
+    margin-top: 0.5rem;
+    padding: 0.6rem;
+    border: none;
+    border-radius: 4px;
+    background: #2563eb;
+    color: #fff;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.form-panel button:hover {
+    background: #1d4ed8;
+}
+
+ul.list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.list li {
+    background: #fff;
+    border: 1px solid #d8dbe0;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.6rem;
+}

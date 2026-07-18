@@ -145,3 +145,15 @@ ul.list li {
 .data-table tbody tr:hover {
     background: #eef2ff;
 }
+
+.row-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.icon-btn {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medicines</title>
     <link rel="stylesheet" href="/css/style.css">
+    
 </head>
 
 <body>
@@ -47,6 +48,12 @@
                                 <td><%= med.expiration_date.toISOString().split("T")[0] %></td>
                                 <td><%= category ? category.name : "Unknown" %></td>
                                 <td><%= manufacturer ? manufacturer.name : "Unknown" %></td>
+                                <td>
+                                    <div class="row-actions">
+                                        <img src="/img/cancel.jpg" alt="Cancel" class="icon-btn">
+                                        <input type="checkbox">
+                                    </div>
+                                </td>
                             </tr>
                             <% }) %>
                     </tbody>

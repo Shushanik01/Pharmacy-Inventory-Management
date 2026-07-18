@@ -24,59 +24,63 @@
         <div class="page">
             <div class="content">
                 <form action="/medicines/delete" method="POST">
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Price</th>
-                            <th>Stock</th>
-                            <th>Expires</th>
-                            <th>Category</th>
-                            <th>Manufacturer</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% medicines.forEach(med=> {
-                            const category = categories.find(c=> c.id === med.category_id);
-                            const manufacturer = manufacturers.find(m=> m.id === med.manufacturer_id);
-                            %>
+                    <table class="data-table">
+                        <thead>
                             <tr>
-                                <td>
-                                    <%= med.name %>
-                                </td>
-                                <td>
-                                    <%= med.description %>
-                                </td>
-                                <td>$<%= med.price %>
-                                </td>
-                                <td>
-                                    <%= med.stock_quantity %>
-                                </td>
-                                <td>
-                                    <%= med.expiration_date.toISOString().split("T")[0] %>
-                                </td>
-                                <td>
-                                    <%= category ? category.name : "Unknown" %>
-                                </td>
-                                <td>
-                                    <%= manufacturer ? manufacturer.name : "Unknown" %>
-                                </td>
-                                <td>
-                                    <div class="row-actions">
-                                        <button type="submit" formaction="/medicines/<%= med.id %>/delete" formmethod="post" class="icon-form-btn">
-                                            <img src="/img/cancel.jpg" alt="Cancel" class="icon-btn">
-                                        </button>
-                                        <input type="checkbox" name="ids" value="<%= med.id %>">
-                                    </div>
-                                </td>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                                <th>Expires</th>
+                                <th>Category</th>
+                                <th>Manufacturer</th>
+                                <th>Actions</th>
                             </tr>
-                            <% }) %>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <% medicines.forEach(med=> {
+                                const category = categories.find(c=> c.id === med.category_id);
+                                const manufacturer = manufacturers.find(m=> m.id === med.manufacturer_id);
+                                %>
+                                <tr>
+                                    <td>
+                                        <%= med.name %>
+                                    </td>
+                                    <td>
+                                        <%= med.description %>
+                                    </td>
+                                    <td>$<%= med.price %>
+                                    </td>
+                                    <td>
+                                        <%= med.stock_quantity %>
+                                    </td>
+                                    <td>
+                                        <%= med.expiration_date.toISOString().split("T")[0] %>
+                                    </td>
+                                    <td>
+                                        <%= category ? category.name : "Unknown" %>
+                                    </td>
+                                    <td>
+                                        <%= manufacturer ? manufacturer.name : "Unknown" %>
+                                    </td>
+                                    <td>
+                                        <div class="row-actions">
+                                            <button type="submit" formaction="/medicines/<%= med.id %>/delete"
+                                                formmethod="post" class="icon-form-btn">
+                                                <img src="/img/cancel.jpg" alt="Cancel" class="icon-btn">
+                                            </button>
+                                            <button type="button" class="icon-form-btn">
+                                                <img src="/img/edit2.png" alt="edit" class="icon-btn">
+                                            </button>
+                                            <input type="checkbox" name="ids" value="<%= med.id %>">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
 
-                <button type="submit" class="delete-btn">Delete</button>
+                    <button type="submit" class="delete-btn">Delete</button>
                 </form>
 
             </div>

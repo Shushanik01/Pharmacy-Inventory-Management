@@ -32,7 +32,7 @@ export async function addMedicine(medicine){
 
 export async function deleteMedicine(id){
     await pool.query(
-        `DELETE FROM medicines WHERE id = $1`,
+        `DELETE FROM medicines WHERE id =  ANY($1)`,
         [id]
     )
 };

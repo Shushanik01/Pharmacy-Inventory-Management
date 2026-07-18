@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medicines</title>
     <link rel="stylesheet" href="/css/style.css">
-    
+
 </head>
 
 <body>
@@ -23,6 +23,7 @@
     <main>
         <div class="page">
             <div class="content">
+                <form action="/medicines/delete" method="POST">
                 <table class="data-table">
                     <thead>
                         <tr>
@@ -39,25 +40,43 @@
                         <% medicines.forEach(med=> {
                             const category = categories.find(c=> c.id === med.category_id);
                             const manufacturer = manufacturers.find(m=> m.id === med.manufacturer_id);
-                        %>
+                            %>
                             <tr>
-                                <td><%= med.name %></td>
-                                <td><%= med.description %></td>
-                                <td>$<%= med.price %></td>
-                                <td><%= med.stock_quantity %></td>
-                                <td><%= med.expiration_date.toISOString().split("T")[0] %></td>
-                                <td><%= category ? category.name : "Unknown" %></td>
-                                <td><%= manufacturer ? manufacturer.name : "Unknown" %></td>
+                                <td>
+                                    <%= med.name %>
+                                </td>
+                                <td>
+                                    <%= med.description %>
+                                </td>
+                                <td>$<%= med.price %>
+                                </td>
+                                <td>
+                                    <%= med.stock_quantity %>
+                                </td>
+                                <td>
+                                    <%= med.expiration_date.toISOString().split("T")[0] %>
+                                </td>
+                                <td>
+                                    <%= category ? category.name : "Unknown" %>
+                                </td>
+                                <td>
+                                    <%= manufacturer ? manufacturer.name : "Unknown" %>
+                                </td>
                                 <td>
                                     <div class="row-actions">
+                                        
                                         <img src="/img/cancel.jpg" alt="Cancel" class="icon-btn">
-                                        <input type="checkbox">
+                                        <input type="checkbox" name="ids" value="<%= med.id %>">
                                     </div>
                                 </td>
                             </tr>
                             <% }) %>
                     </tbody>
                 </table>
+
+                <button type="submit">Delete</button>
+                </form>
+
             </div>
 
             <div class="form-panel">
@@ -75,7 +94,7 @@
 
                     <div>
                         <label for="price">Price</label>
-                       <input type="text" inputmode="decimal" pattern="^\d+(\.\d{1,2})?$" id="price" name="price">
+                        <input type="text" inputmode="decimal" pattern="^\d+(\.\d{1,2})?$" id="price" name="price">
 
                     </div>
 
@@ -93,7 +112,9 @@
                         <label for="category_id">Category</label>
                         <select id="category_id" name="category_id">
                             <% categories.forEach(category=> { %>
-                                <option value="<%= category.id %>"><%= category.name %></option>
+                                <option value="<%= category.id %>">
+                                    <%= category.name %>
+                                </option>
                                 <% }) %>
                         </select>
                     </div>
@@ -102,7 +123,9 @@
                         <label for="manufacturer_id">Manufacturer</label>
                         <select id="manufacturer_id" name="manufacturer_id">
                             <% manufacturers.forEach(manufacturer=> { %>
-                                <option value="<%= manufacturer.id %>"><%= manufacturer.name %></option>
+                                <option value="<%= manufacturer.id %>">
+                                    <%= manufacturer.name %>
+                                </option>
                                 <% }) %>
                         </select>
                     </div>

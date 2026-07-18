@@ -1,4 +1,10 @@
-import { categoryModel, medicinesModel, getManuf, addMedicine as addMedicineQuery } from "../database/queries.js";
+import {
+    categoryModel,
+    medicinesModel,
+    getManuf,
+    addMedicine as addMedicineQuery,
+    deleteMedicine
+} from "../database/queries.js";
 
 export async function getAllCategories(req, res) {
     const categories = await categoryModel();
@@ -12,7 +18,7 @@ export function getHomePage(req, res) {
     res.render("indexView");
 };
 
-export async function getMedicines(req, res){
+export async function getMedicines(req, res) {
     const medicines = await medicinesModel();
     const categories = await categoryModel();
     const manufacturers = await getManuf();
@@ -24,7 +30,7 @@ export async function getMedicines(req, res){
     })
 };
 
-export async function getManufacturers(req, res){
+export async function getManufacturers(req, res) {
     const man = await getManuf();
 
     res.render("createdBy", {
@@ -32,7 +38,19 @@ export async function getManufacturers(req, res){
     })
 };
 
-export async function addMedicine(req, res){
+export async function addMedicine(req, res) {
     await addMedicineQuery(req.body);
+    res.redirect('/medicines')
+};
+
+export async function removeMedicine(req, res) {
+    const { id } = req.params
+    await deleteMedicine([id])
+    res.redirect('/medicines')
+};
+
+export async function removeMedicines(req, res) {
+    const ids = [].concat(req.body.ids || []);
+    await deleteMedicine(ids)
     res.redirect('/medicines')
 }

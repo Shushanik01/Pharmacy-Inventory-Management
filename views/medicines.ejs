@@ -65,8 +65,9 @@
                                 </td>
                                 <td>
                                     <div class="row-actions">
-                                        
-                                        <img src="/img/cancel.jpg" alt="Cancel" class="icon-btn">
+                                        <button type="submit" formaction="/medicines/<%= med.id %>/delete" formmethod="post" class="icon-form-btn">
+                                            <img src="/img/cancel.jpg" alt="Cancel" class="icon-btn">
+                                        </button>
                                         <input type="checkbox" name="ids" value="<%= med.id %>">
                                     </div>
                                 </td>

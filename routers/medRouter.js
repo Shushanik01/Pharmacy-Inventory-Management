@@ -9,4 +9,6 @@ const medRouter = Router();
 
  medRouter.post("/medicines/delete", Controller.removeMedicines)
 
+ medRouter.post("/medicines/:id/delete", Controller.removeMedicine)
+
  export default medRouter

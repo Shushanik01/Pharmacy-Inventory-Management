@@ -28,4 +28,11 @@ export async function addMedicine(medicine){
         VALUES($1, $2, $3, $4, $5, $6, $7)`,
         [name, description, price, stock_quantity, expiration_date, category_id, manufacturer_id]
     )
-}
+};
+
+export async function deleteMedicine(id){
+    await pool.query(
+        `DELETE FROM medicines WHERE id = $1`,
+        [id]
+    )
+};

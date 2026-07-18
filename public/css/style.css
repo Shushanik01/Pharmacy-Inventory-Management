@@ -74,7 +74,8 @@ main {
     display: block;
 }
 
-.form-panel input {
+.form-panel input,
+.form-panel select {
     width: 100%;
     padding: 0.5rem;
     border: 1px solid #c7cbd1;
@@ -109,4 +110,38 @@ ul.list li {
     border-radius: 6px;
     padding: 0.75rem 1rem;
     margin-bottom: 0.6rem;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border: 1px solid #d8dbe0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.data-table th,
+.data-table td {
+    text-align: left;
+    padding: 0.65rem 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 0.9rem;
+}
+
+.data-table thead th {
+    background: #1f2328;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.03em;
+}
+
+.data-table tbody tr:nth-child(even) {
+    background: #f6f7f9;
+}
+
+.data-table tbody tr:hover {
+    background: #eef2ff;
 }

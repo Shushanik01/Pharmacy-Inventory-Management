@@ -14,9 +14,13 @@ export function getHomePage(req, res) {
 
 export async function getMedicines(req, res){
     const medicines = await medicinesModel();
+    const categories = await categoryModel();
+    const manufacturers = await getManuf();
 
     res.render("medicines", {
-        medicines
+        medicines,
+        categories,
+        manufacturers
     })
 };
 

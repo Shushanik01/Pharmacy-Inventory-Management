@@ -22,13 +22,35 @@
     <main>
         <div class="page">
             <div class="content">
-                <ul class="list">
-                    <% medicines.forEach(med=> { %>
-                        <li>
-                            <%= med.name %>
-                        </li>
-                        <% }) %>
-                </ul>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                            <th>Expires</th>
+                            <th>Category</th>
+                            <th>Manufacturer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% medicines.forEach(med=> {
+                            const category = categories.find(c=> c.id === med.category_id);
+                            const manufacturer = manufacturers.find(m=> m.id === med.manufacturer_id);
+                        %>
+                            <tr>
+                                <td><%= med.name %></td>
+                                <td><%= med.description %></td>
+                                <td>$<%= med.price %></td>
+                                <td><%= med.stock_quantity %></td>
+                                <td><%= med.expiration_date.toISOString().split("T")[0] %></td>
+                                <td><%= category ? category.name : "Unknown" %></td>
+                                <td><%= manufacturer ? manufacturer.name : "Unknown" %></td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
             </div>
 
             <div class="form-panel">
@@ -61,13 +83,21 @@
                     </div>
 
                     <div>
-                        <label for="category_id">Category ID</label>
-                        <input type="number" id="category_id" name="category_id">
+                        <label for="category_id">Category</label>
+                        <select id="category_id" name="category_id">
+                            <% categories.forEach(category=> { %>
+                                <option value="<%= category.id %>"><%= category.name %></option>
+                                <% }) %>
+                        </select>
                     </div>
 
                     <div>
-                        <label for="manufacturer_id">Manufacturer ID</label>
-                        <input type="number" id="manufacturer_id" name="manufacturer_id">
+                        <label for="manufacturer_id">Manufacturer</label>
+                        <select id="manufacturer_id" name="manufacturer_id">
+                            <% manufacturers.forEach(manufacturer=> { %>
+                                <option value="<%= manufacturer.id %>"><%= manufacturer.name %></option>
+                                <% }) %>
+                        </select>
                     </div>
 
                     <button type="submit">Add</button>

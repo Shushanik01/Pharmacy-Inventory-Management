@@ -4,19 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Categories</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-    <h1>Categories</h1>
+    <header>
+        <h1>Categories</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/categories">Categories</a>
+            <a href="/medicines">Medicines</a>
+            <a href="/manufacturers">Manufacturers</a>
+        </nav>
+    </header>
 
-    <ul>
-        <% categories.forEach(category=> { %>
-            <li>
-                <%= category.name %>
-            </li>
-            <% }) %>
-    </ul>
+    <main>
+        <ul class="list">
+            <% categories.forEach(category=> { %>
+                <li>
+                    <%= category.name %>
+                </li>
+                <% }) %>
+        </ul>
+    </main>
 </body>
 
 </html>

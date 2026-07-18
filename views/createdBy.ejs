@@ -1,7 +1,31 @@
-<h1>Manufacturers</h1>
+<!DOCTYPE html>
+<html lang="en">
 
-<ul>
-    <% man.forEach(man => { %>
-        <li><%= man.name %></li>
-    <% }) %>
-</ul>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manufacturers</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Manufacturers</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/categories">Categories</a>
+            <a href="/medicines">Medicines</a>
+            <a href="/manufacturers">Manufacturers</a>
+        </nav>
+    </header>
+
+    <main>
+        <ul class="list">
+            <% man.forEach(man => { %>
+                <li><%= man.name %></li>
+                <% }) %>
+        </ul>
+    </main>
+</body>
+
+</html>

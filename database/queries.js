@@ -55,4 +55,4 @@ export async function updateMedicine(id, medicine){
         `,
         [name, description, price, stock_quantity, expiration_date, category_id, manufacturer_id, id]
     )
-}
+};

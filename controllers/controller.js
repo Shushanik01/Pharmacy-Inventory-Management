@@ -3,7 +3,9 @@ import {
     medicinesModel,
     getManuf,
     addMedicine as addMedicineQuery,
-    deleteMedicine
+    deleteMedicine,
+    getMedicineById,
+    updateMedicine as updateMedicineQuery
 } from "../database/queries.js";
 
 export async function getAllCategories(req, res) {
@@ -53,4 +55,23 @@ export async function removeMedicines(req, res) {
     const ids = [].concat(req.body.ids || []);
     await deleteMedicine(ids)
     res.redirect('/medicines')
-}
+};
+
+export async function editMedicineForm(req, res) {
+    const { id } = req.params
+    const medicine = await getMedicineById(id);
+    const categories = await categoryModel();
+    const manufacturers = await getManuf();
+
+    res.render("editMedicine", {
+        medicine,
+        categories,
+        manufacturers
+    });
+};
+
+export async function updateMedicine(req, res) {
+    const { id } = req.params;
+    await updateMedicineQuery(id, req.body);
+    res.redirect('/medicines');
+};

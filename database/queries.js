@@ -36,3 +36,23 @@ export async function deleteMedicine(id){
         [id]
     )
 };
+
+export async function getMedicineById(id){
+    const {rows} = await pool.query(
+        `SELECT * FROM medicines WHERE id = $1`,
+        [id]
+    );
+    return rows[0]
+};
+
+export async function updateMedicine(id, medicine){
+    const {name, description, price, stock_quantity, expiration_date, category_id, manufacturer_id} = medicine
+    await pool.query(
+        `UPDATE medicines
+        SET name = $1, description = $2, price = $3,
+        stock_quantity = $4, expiration_date = $5, category_id = $6,
+        manufacturer_id = $7 WHERE id = $8
+        `,
+        [name, description, price, stock_quantity, expiration_date, category_id, manufacturer_id, id]
+    )
+}

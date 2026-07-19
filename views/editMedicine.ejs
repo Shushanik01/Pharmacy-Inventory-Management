@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Medicine</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Edit Medicine</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/categories">Categories</a>
+            <a href="/medicines">Medicines</a>
+            <a href="/manufacturers">Manufacturers</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="form-panel">
+            <h2>Edit medicine</h2>
+            <form method="post" action="/medicines/<%= medicine.id %>/edit">
+                <div>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" value="<%= medicine.name %>">
+                </div>
+
+                <div>
+                    <label for="description">Description</label>
+                    <input type="text" id="description" name="description" value="<%= medicine.description %>">
+                </div>
+
+                <div>
+                    <label for="price">Price</label>
+                    <input type="text" inputmode="decimal" pattern="^\d+(\.\d{1,2})?$" id="price" name="price"
+                        value="<%= medicine.price %>">
+                </div>
+
+                <div>
+                    <label for="stock_quantity">Stock quantity</label>
+                    <input type="number" id="stock_quantity" name="stock_quantity"
+                        value="<%= medicine.stock_quantity %>">
+                </div>
+
+                <div>
+                    <label for="expiration_date">Expiration date</label>
+                    <input type="date" id="expiration_date" name="expiration_date"
+                        value="<%= medicine.expiration_date.toISOString().split('T')[0] %>">
+                </div>
+
+                <div>
+                    <label for="category_id">Category</label>
+                    <select id="category_id" name="category_id">
+                        <% categories.forEach(category=> { %>
+                            <option value="<%= category.id %>" <%=category.id===medicine.category_id ? "selected"
+                                : "" %>>
+                                <%= category.name %>
+                            </option>
+                            <% }) %>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="manufacturer_id">Manufacturer</label>
+                    <select id="manufacturer_id" name="manufacturer_id">
+                        <% manufacturers.forEach(manufacturer=> { %>
+                            <option value="<%= manufacturer.id %>" <%=manufacturer.id===medicine.manufacturer_id
+                                ? "selected" : "" %>>
+                                <%= manufacturer.name %>
+                            </option>
+                            <% }) %>
+                    </select>
+                </div>
+
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>

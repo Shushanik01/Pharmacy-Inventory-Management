@@ -159,6 +159,7 @@ ul.list li {
 }
 
 .icon-form-btn {
+    display: inline-block;
     background: none;
     border: none;
     padding: 0;

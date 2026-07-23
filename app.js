@@ -3,6 +3,11 @@ import IndexRouter from './routers/indexRouter.js';
 import categoryRoute from './routers/categoryRouter.js';
 import medRouter from './routers/medRouter.js';
 import manufacturerRouter from './routers/manufacturerRouter.js';
+import path from 'express';
+import session from 'express-session';
+import passport from 'passport';
+import { Strategy as LocalStrategy } from 'passport-local';
+
 
 const app = express();
 
@@ -14,7 +19,13 @@ app.use(express.static("public"));
 app.use(IndexRouter);
 app.use(categoryRoute);
 app.use(medRouter);
-app.use(manufacturerRouter)
+app.use(manufacturerRouter);
+app.use(session({
+    secret: 'tiredAf',
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.session())
 
 app.set("view engine", "ejs")
 

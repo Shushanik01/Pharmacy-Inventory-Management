@@ -3,10 +3,10 @@ import IndexRouter from './routers/indexRouter.js';
 import categoryRoute from './routers/categoryRouter.js';
 import medRouter from './routers/medRouter.js';
 import manufacturerRouter from './routers/manufacturerRouter.js';
-import path from 'express';
 import session from 'express-session';
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
+import signUpRpute from './routers/signUpRouter.js';
 
 
 const app = express();
@@ -25,7 +25,9 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
-app.use(passport.session())
+app.use(passport.session());
+
+app.use(signUpRpute)
 
 app.set("view engine", "ejs")
 

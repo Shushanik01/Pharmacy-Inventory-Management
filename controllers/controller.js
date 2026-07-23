@@ -75,3 +75,7 @@ export async function updateMedicine(req, res) {
     await updateMedicineQuery(id, req.body);
     res.redirect('/medicines');
 };
+
+export async function renderSignUpPage(req, res){
+    res.render('sign-up-form')
+}

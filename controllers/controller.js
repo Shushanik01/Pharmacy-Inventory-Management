@@ -5,7 +5,8 @@ import {
     addMedicine as addMedicineQuery,
     deleteMedicine,
     getMedicineById,
-    updateMedicine as updateMedicineQuery
+    updateMedicine as updateMedicineQuery,
+    handleSignUp as SignUpQuery
 } from "../database/queries.js";
 
 export async function getAllCategories(req, res) {
@@ -78,4 +79,16 @@ export async function updateMedicine(req, res) {
 
 export async function renderSignUpPage(req, res){
     res.render('sign-up-form')
+};
+
+export async function handleSignUp(req, res){
+    try {
+        await SignUpQuery({
+            username: req.body.username,
+            password: req.body.password
+        });
+        res.redirect('/')
+    } catch (err) {
+        res.status(400).render('sign-up-form', { error: err.message })
+    }
 }

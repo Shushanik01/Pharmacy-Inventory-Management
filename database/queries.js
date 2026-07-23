@@ -1,4 +1,5 @@
 import pool from "./pool.js";
+import bcrypt from "bcrypt";
 
 export async function categoryModel() {
     const { rows } = await pool.query(
@@ -14,15 +15,15 @@ export async function medicinesModel() {
     return rows
 };
 
-export async function getManuf(){
-    const {rows} = await pool.query(
+export async function getManuf() {
+    const { rows } = await pool.query(
         "SELECT * FROM manufactorers ORDER BY NAME"
     );
     return rows
 };
 
-export async function addMedicine(medicine){
-    const {name, description, price, stock_quantity, expiration_date, category_id, manufacturer_id} = medicine
+export async function addMedicine(medicine) {
+    const { name, description, price, stock_quantity, expiration_date, category_id, manufacturer_id } = medicine
     await pool.query(
         `INSERT INTO medicines (name, description, price, stock_quantity, expiration_date, category_id, manufacturer_id)
         VALUES($1, $2, $3, $4, $5, $6, $7)`,
@@ -30,23 +31,23 @@ export async function addMedicine(medicine){
     )
 };
 
-export async function deleteMedicine(id){
+export async function deleteMedicine(id) {
     await pool.query(
         `DELETE FROM medicines WHERE id =  ANY($1)`,
         [id]
     )
 };
 
-export async function getMedicineById(id){
-    const {rows} = await pool.query(
+export async function getMedicineById(id) {
+    const { rows } = await pool.query(
         `SELECT * FROM medicines WHERE id = $1`,
         [id]
     );
     return rows[0]
 };
 
-export async function updateMedicine(id, medicine){
-    const {name, description, price, stock_quantity, expiration_date, category_id, manufacturer_id} = medicine
+export async function updateMedicine(id, medicine) {
+    const { name, description, price, stock_quantity, expiration_date, category_id, manufacturer_id } = medicine
     await pool.query(
         `UPDATE medicines
         SET name = $1, description = $2, price = $3,
@@ -56,3 +57,12 @@ export async function updateMedicine(id, medicine){
         [name, description, price, stock_quantity, expiration_date, category_id, manufacturer_id, id]
     )
 };
+
+export async function handleSignUp(info) {
+    const { username, password } = info;
+    const hashedPassword = await bcrypt.hash(password, 10);
+    await pool.query("INSERT INTO users (username, password) VALUES ($1, $2)", [
+        username,
+        hashedPassword
+    ])
+}
